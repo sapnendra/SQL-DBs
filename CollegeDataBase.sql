@@ -1,4 +1,5 @@
 create database if not exists College;
+
 use College;
 
 create table student(
@@ -17,6 +18,25 @@ values
 (103, "Anoop", 90, "A", "Bhopal"),
 (104, "Ratnesh", 84, "A", "Amiliya"),
 (105, "Paawan", 82, "A", "Bhopal");
+
+drop table student;
+
+select * from student;
+
+/* for drop a column */
+alter table student
+drop column age;
+
+/* add a column */
+alter table student
+add column age int not null;
+
+
+
+
+
+
+
 
 drop table if exists student;
 
