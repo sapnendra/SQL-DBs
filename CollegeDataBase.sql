@@ -56,7 +56,20 @@ group by city;
 select city, avg(marks)
 from student
 group by city
-order by city asc; 
+order by city asc;
+
+use College;
+
+update student
+set marks = marks + 1;
+
+select * from student;
+
+delete from student
+where marks <= 82;
+
+select * from student;
+
 
 
 
