@@ -31,13 +31,6 @@ drop column age;
 alter table student
 add column age int not null;
 
-
-
-
-
-
-
-
 drop table if exists student;
 
 select * from student;
@@ -90,18 +83,65 @@ where marks <= 82;
 
 select * from student;
 
+alter table student
+change name full_name varchar(20);
 
+delete from student
+where marks < 80;
 
+alter table student 
+drop column grade;
 
+use College;
 
+create table if not exists result (
+	rollno int primary key,
+    name varchar(20),
+    marks int not null,
+    city varchar(20)
+);
 
+insert into result
+(rollno, name, marks, city)
+values
+(101, "Anil", 78, "Pune"),
+(102, "Bhumika", 93, "Mumbai"),
+(103, "Chetan", 85, "Mumbai"),
+(104, "Dhruv", 96, "Delhi"),
+(105, "Emanual", 92, "Delhi"),
+(106, "Farah", 82, "Delhi");
 
+select * from result;
 
+create view view1 as
+select rollno, name, marks from result;
 
+select * from view1;
 
+drop view view1;
 
+select avg(marks) from result;
 
+select * from result
+where marks > 87.6667;
 
+select * from result
+where marks > (select avg(marks) from result);
 
+ select *
+ from result
+ where rollno in (
+	select rollno 
+    from result
+    where rollno % 2 = 0
+);
 
+select max(marks)
+from result;
 
+select max(marks)
+from (
+	select * 
+    from result 
+    where city = "Delhi"
+) as temp;
